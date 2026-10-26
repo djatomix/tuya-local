@@ -1,0 +1,70 @@
+name: HJM Solea radiator
+products:
+  - id: wpnbyobh48qulgsa
+    manufacturer: HJM
+    model: Solea 1500 WiFi
+
+entities:
+  - entity: select
+    name: Heating mode
+    icon: mdi:radiator
+    dps:
+      - id: 4
+        type: string
+        name: option
+        mapping:
+          - dps_val: standby
+            value: "Off"
+          - dps_val: comfort
+            value: Comfort
+          - dps_val: night
+            value: Night
+          - dps_val: anti_ice
+            value: Frost protection
+          - dps_val: chrono
+            value: Schedule
+          - dps_val: boost_2h
+            value: Boost
+          - dps_val: fil_pilote
+            value: Pilot wire
+
+  - entity: number
+    name: Comfort temperature
+    icon: mdi:thermometer
+    dps:
+      - id: 101
+        type: integer
+        name: value
+        unit: C
+        range:
+          min: 50
+          max: 300
+        mapping:
+          - scale: 10
+            step: 5
+
+  - entity: number
+    name: Night temperature
+    icon: mdi:thermometer-low
+    dps:
+      - id: 102
+        type: integer
+        name: value
+        unit: C
+        range:
+          min: 50
+          max: 300
+        mapping:
+          - scale: 10
+            step: 5
+
+  - entity: sensor
+    name: Room temperature
+    class: temperature
+    dps:
+      - id: 3
+        type: integer
+        name: sensor
+        unit: C
+        mapping:
+          - scale: 10
